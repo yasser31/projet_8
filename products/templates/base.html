@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Changer Votre Alimentation</title>
+
+    <!-- Font Awesome Icons -->
+    <link href="{% static 'css/all.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic'
+        rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="{% static 'css/magnific-popup.css' %}" rel="stylesheet">
+
+    <!-- Theme CSS - Includes Bootstrap -->
+    <link href="{% static 'css/creative.css' %}" rel="stylesheet">
+
+    <!-- search bar css -->
+    <link href="{% static 'css/search_bar.css' %}" rel="stylesheet" type="text/css">
+</head>
+
+<body id="page-top" class="h-100">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light  py-3 mb-1 " id="mainNav">
+        <div class="container pr-0 mx-auto">
+            <img src="{% static 'images/logo pure beurre.png' %}" alt="logo">
+            <a class="navbar-brand js-scroll-trigger ml-2" href="{% url 'index' %}">Pure Beurre</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto my-2 my-lg-0 mr-1">
+
+                    {% if user.is_authenticated %}
+
+                    <li class="nav-item">
+                        <a href="{% url 'logout' %}" class="nav-link js-scroll-trigger"><i
+                                class="fas fa-sign-out-alt fa-cog" title="logout"></i></a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger pt-0 mr-2" href="{% url 'login' %}"><i class="fas fa-user"
+                                title="Mon compte"></i></a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{% url 'preferences' %}">
+                            <i class="fas fa-carrot" title="Mes aliments"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <form method='GET' action="{% url 'search' %}" class="d-none d-sm-block">
+                <div class="d-flex justify-content-center h-100">
+                    <div class="searchbar p-0" id="search_nav">
+                        <input class="search_input" id="search_input_nav" type="text" name="query"
+                            placeholder="Search...">
+                        <button type="submit" class="btn btn-primary btn-xl "> Search </button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+    {% block registration %}
+    {% endblock %}
+    {% block login %}
+    {% endblock %}
+    {% block result %}
+    {% endblock %}
+    {% block contact %}
+    {% endblock %}
+    {% block save %}
+    {% endblock %}
+    {% block notice %}
+    {% endblock %}
+    <footer class="bg-light py-5 ">
+        <div class="container">
+            <div class="row">
+                <div class=" medium text-muted col-lg-2">
+                    <a href="{% url 'legal' %}">Mentions légales</a>
+                </div>
+                <div class="medium text-muted col-lg-9">Copyright &copy; 2019 - Pure Beurre</div>
+                <div class=" medium text-muted col-lg-1">
+                    <a href="{% url 'contact' %}">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'javascript/jquery.js' %}"></script>
+    <script src="{% static 'javascript/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'javascript/bootstrap.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{% static 'javascript/jquery.easing.js' %}"></script>
+    <script src="{% static 'javascript/jquery.magnific-popup.js' %}"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="{% static 'javascript/creative.min.js' %}"></script>
+</body>
+
+</html>

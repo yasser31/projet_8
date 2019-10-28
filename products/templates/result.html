@@ -1,0 +1,79 @@
+{% extends 'base.html'%}
+{% block result %}
+{% load static %}
+<style>
+  #result {
+    background-image: url("../images/back2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  #product {
+    background-image: url({{query.image}})
+  }
+
+  nav {
+    background-color: black;
+  }
+</style>
+{% if no_product %}
+<h2 class="text-center mt-7"> Désolé nous n'avons trouver aucun produit correspondant à votre recherche</h2>
+{% elif not result %}
+<h2 class="text-center mt-7"> Vous n'avez aucun substitut veuillez en rechercher un </h2>
+{% else %}
+{% if query.is_product %}
+<div class="container mt-5 h-75 pt-2">
+  <div class="row h-100">
+    <div class="col-lg-12 mt-5 h-75" id="product">
+      <h1 class="text-center mt-7 text-white"> {{ query.product_name }}</h1>
+    </div>
+  </div>
+</div>
+<h2 class="text-center mb-3">Vous pouvez remplacer cet aliment par</h2>
+{% else %}
+<h2 class="text-center">Vos substitus</h2>
+{% endif %}
+<div class="container mt-0" id="result">
+  <div class="row">
+    {% for item in result %}
+    <div class="col-lg-4 my-4">
+      <div class="card" style="width: 18rem;">
+        {% if item.nutrition_grade == 'a' %}
+        <span class="badge badge-success w-25 h-10"> {{ item.nutrition_grade|upper }}</span>
+        {% elif item.nutrition_grade == 'b' %}
+        <span class="badge badge-less w-25 h-10"> {{ item.nutrition_grade|upper }}</span>
+        {% elif item.nutrition_grade == 'c' %}
+        <span class="badge badge-w w-25 h-10"> {{ item.nutrition_grade|upper }}</span>
+        {% elif item.nutrition_grade == 'd' %}
+        <span class="badge badge-warning w-25 h-10"> {{ item.nutrition_grade|upper }}</span>
+        {% elif item.nutrition_grade == 'e' %}
+        <span class="badge badge-danger w-25 h-10"> {{ item.nutrition_grade|upper }}</span>
+        {% endif %}
+        {% if item.is_product %}
+        <a href="{% url 'save' product_id=item.id %}">
+          <img src="{{item.image}}" class="card-img-top w-100 h-60" alt="max-height 100%">
+        </a>
+        {% else %}
+        <img src="{{item.image}}" class="card-img-top w-100 h-60" alt="max-height 100%">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ item.product_name }}</h5>
+        </div>
+        {% if item.is_product %}
+        <div class="card-body">
+          <a href="{% url 'save' product_id=item.id %}" class="card-link">
+            <i class="fas fa-save" title="Enregistrer"></i></a>
+        </div>
+        {% else %}
+        <div class="card-body">
+          <a href="{% url 'remove' preference_id=item.id %}" class="card-link">
+            <i class="fas fa-trash-alt" title="retirer"></i></a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif%}
+{% endblock %}

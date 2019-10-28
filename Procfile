@@ -1,0 +1,1 @@
+web: gunicorn  amateur_nutella.wsgi --log-file -

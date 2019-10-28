@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block registration %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg- mt-5">
+            <h2>Sign up</h2>
+            <form class="form-group mt-5" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-success">Sign up</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
