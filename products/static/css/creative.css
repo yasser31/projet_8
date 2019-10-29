@@ -4876,7 +4876,7 @@ input[type="button"].btn-block {
   color: #fff;
 }
 
-.card {
+ {
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4991,6 +4991,8 @@ input[type="button"].btn-block {
   width: 100%;
   border-top-left-radius: calc(0.25rem - 1px);
   border-top-right-radius: calc(0.25rem - 1px);
+  height: 20vw;
+  object-fit: cover;
 }
 
 .card-img-bottom {
@@ -5289,8 +5291,9 @@ input[type="button"].btn-block {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   position: absolute;
-  right: -5%;
-  top: -5%
+  right: -3%;
+  top: -5%;
+  z-index: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {

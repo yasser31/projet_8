@@ -8,7 +8,7 @@ class Preferences(models.Model):
     nutrition_grade = models.CharField(max_length=1, null=True, blank=True)
     nutrition_image = models.ImageField(upload_to="images/",
                                         null=True, blank=True)
-    product_url = models.URLField(max_length=255, default="")
+    product_url = models.TextField()
     user = models.ManyToManyField(User, related_name="Preferences")
 
     def __str__(self):
@@ -21,7 +21,7 @@ class Products(models.Model):
     nutrition_grade = models.CharField(max_length=1)
     ingredients = models.TextField()
     nutri_image = models.ImageField(upload_to="images/", null=True, blank=True)
-    product_url = models.URLField(max_length=255, default="")
+    product_url = models.TextField()
     categories = models.CharField(max_length=250, default="")
     is_product = models.BooleanField(default=True)
 

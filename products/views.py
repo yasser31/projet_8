@@ -14,57 +14,18 @@ def index(request):
 
 def search(request):
     query = request.GET.get('query')
-    params = {
-        "search_terms": query,
-        "search_simple": 1,
-        "action": "process",
-        "json": 1
-    }
-    response = requests.get(settings.API_URL, params=params)
-    data = response.json()
-
-    if len(data["products"]) > 0:
-        for product in data["products"]:
-            if "product_name" in product:
-                product_name = product["product_name"]
-            if "image_front_url" in product:
-                image = product["image_front_url"]
-            if "nutrition_grades" in product:
-                score = product["nutrition_grades"]
-            if "ingredients_text" in product:
-                ingredients = product["ingredients_text"]
-            if "image_nutrition_url" in product:
-                nutrition_url = product["image_nutrition_url"]
-            if "url" in product:
-                product_url = product["url"]
-            if "categories_hierarchy" in product:
-                categories = product["categories_hierarchy"][0]
-            try:
-                Products.objects.get(product_name=product_name)
-            except Products.DoesNotExist:
-                Products.objects.create(product_name=product_name,
-                                        image=image,
-                                        nutrition_grade=score,
-                                        ingredients=ingredients,
-                                        nutri_image=nutrition_url,
-                                        product_url=product_url,
-                                        categories=categories
-                                        )
-        category = data["products"][0]["categories_hierarchy"][0]
-        result = Products.objects.filter(
-            categories=category).order_by("nutrition_grade")[0:10]
-
-        product_name = data["products"][0]["product_name"]
-        query = Products.objects.get(product_name=product_name)
+    try:
+        searched_product = Products.objects.filter(
+        product_name__icontains=query)[0]
+        result = Products.objects.filter(product_name__icontains=query).order_by("nutrition_grade")[0:10]
         context = {
             'result': result,
-            'query': query
+            'query': searched_product
         }
         return render(request, "result.html", context)
-
-    else:
+    except:
         context = {
-                   "no_product": True
+                    "no_product": True
         }
         return render(request, "result.html", context)
 
