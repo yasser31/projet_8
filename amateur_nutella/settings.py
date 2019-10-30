@@ -24,7 +24,7 @@ SECRET_KEY = 'oxw^sd1m-dnc4y-#(r#uo#y&68wyzq1g516k4u)5baryeq!6v)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['stark-badlands-89381.herokuapp.com', '0.0.0.0', '127.0.0.1']
+ALLOWED_HOSTS = ['stark-badlands-89381.herokuapp.com', '0.0.0.0', '127.0.0.1', 'localhost']
 
 
 # Application definition
