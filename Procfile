@@ -1,1 +1,1 @@
-web: gunicorn  amateur_nutella.amateur_nutella.wsgi --log-file -
+web: gunicorn  amateur_nutella.wsgi --log-file -
