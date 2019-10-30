@@ -70,6 +70,10 @@ body {
   
 }
 
+.footer {
+    top: 15vw;
+}
+
 [tabindex="-1"]:focus {
   outline: 0 !important;
 }
