@@ -30,14 +30,14 @@ ALLOWED_HOSTS = ['cryptic-headland-44701.herokuapp.com', '127.0.0.1', 'localhost
 # Application definition
 
 INSTALLED_APPS = [
-    'products',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-# 'whitenoise.runserver_nostatic'
+    'whitenoise.runserver_nostatic',
+    'products',
 ]
 
 MIDDLEWARE = [
@@ -48,7 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-# 'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     
 ]
 
