@@ -77,12 +77,12 @@ WSGI_APPLICATION = 'amateur_nutella.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'amateur_nutella',
-        'USER': 'postgres',
-        'PASSWORD': 'YASSERfriha31',
-                    'HOST': 'localhost',
-                    'PORT': '5432',
+        'ENGINE': os.environ.get("ENGINE"),
+        'NAME': os.environ.get("DATA_BASE_NAME"),
+        'USER': os.environ.get("DABASE_USER"),
+        'PASSWORD': os.environ.get("DATA_BASE_PASSWORD"),
+                    'HOST': os.environ.get("DATA_BASE_HOST"),
+                    'PORT': os.environ.get("PORT")
     }
 }
 
