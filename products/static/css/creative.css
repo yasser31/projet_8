@@ -71,7 +71,7 @@ body {
 }
 
 .footer {
-    top: 25vw; 
+    top: 25vh; 
 }
 
 [tabindex="-1"]:focus {
