@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 import os
-import dj_database_url
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -87,8 +87,6 @@ DATABASES = {
     }
 }
 
-DATABASES['default'] = dj_database_url.parse('postgres://rvmkzlucgbktdq:d98f38551fa566940d222e6d54f9baf4bb8af8069472765b91c496f5049cca92@ec2-107-22-216-53.compute-1.amazonaws.com:5432/d4f345nn7tfvqa', conn_max_age=600)
-
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
@@ -149,3 +147,5 @@ LOGGING = {
         },
     },
 }
+
+django_heroku.settings(locals())
