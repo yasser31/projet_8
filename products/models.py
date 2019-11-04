@@ -3,6 +3,7 @@ from django.db import models
 
 
 class Preferences(models.Model):
+    ''' defines the preferences table with the attributes'''
     product_name = models.CharField(
         unique=True, max_length=250, null=True, blank=True)
     image = models.ImageField(upload_to="images/", null=True, blank=True)
@@ -17,6 +18,7 @@ class Preferences(models.Model):
 
 
 class Products(models.Model):
+    ''' defines the products table with attributes'''
     product_name = models.CharField(unique=True, max_length=250)
     image = models.ImageField(upload_to="images/")
     nutrition_grade = models.CharField(max_length=1)

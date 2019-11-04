@@ -16,6 +16,7 @@ class TestSave(TestCase):
         Products.objects.create(product_name="pizza")
 
     def test_save(self):
+        ''' tests that the subsitut is saved in preferences'''
         product = Products.objects.get(product_name='pizza')
         response = self.client.get(reverse('save', args=[product.id]))
 

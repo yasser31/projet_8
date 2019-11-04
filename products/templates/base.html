@@ -1,7 +1,9 @@
 <!DOCTYPE html>
+<!-- serves as a base html template that will bes shared by all the other templates-->
 <html lang="en" class="h-100">
 
 <head>
+    <!-- static tag that can be used to create urls to static files-->
     {% load static %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -44,7 +46,7 @@
                 <ul class="navbar-nav ml-auto my-2 my-lg-0 mr-1">
 
                     {% if user.is_authenticated %}
-
+                    <!-- checks if use is authenticated and shows different elements depending on this-->
                     <li class="nav-item">
                         <a href="{% url 'logout' %}" class="nav-link js-scroll-trigger"><i
                                 class="fas fa-sign-out-alt fa-cog" title="logout" id="logout"></i></a>
@@ -67,6 +69,7 @@
                     <div class="searchbar p-0" id="search_nav">
                         <input class="search_input" id="search_input_nav" type="text" name="query"
                             placeholder="Search...">
+                        <!-- search in navbar -->
                         <button type="submit" class="btn btn-primary btn-xl "> Search </button>
                     </div>
                 </div>

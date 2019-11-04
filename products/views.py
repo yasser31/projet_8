@@ -7,9 +7,13 @@ from django.conf import settings
 from django.shortcuts import render, redirect
 from products.models import Products, Preferences
 
+# index page view
+
 
 def index(request):
     return render(request, 'index.html')
+
+# the function that will handle the search
 
 
 def search(request):
@@ -30,7 +34,7 @@ def search(request):
         }
         return render(request, "result.html", context)
 
-
+# function that will handle saving products use with a decorator
 @login_required()
 def save(request, product_id):
     product = Products.objects.get(id=product_id)
@@ -56,7 +60,7 @@ def save(request, product_id):
     }
     return render(request, "save.html", context)
 
-
+# handle the acces to preferences
 @login_required()
 def preferences(request):
     result = Preferences.objects.all()
@@ -72,12 +76,14 @@ def preferences(request):
         }
         return render(request, "preferences.html", context)
 
-
+# handle preferences deletion
 @login_required()
 def remove_preferences(request, preference_id):
     preference = Preferences.objects.get(id=preference_id)
     preference.delete()
     return render(request, "preferences.html")
+
+# handle the signup
 
 
 def signup(request):
@@ -95,9 +101,13 @@ def signup(request):
 
     return render(request, "signup.html", {"form": form})
 
+# handle the access to the contact page
+
 
 def contact(request):
     return render(request, "contact.html")
+
+# handle the access to legal notice page
 
 
 def legal_notice(request):

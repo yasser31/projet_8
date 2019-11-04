@@ -13,6 +13,7 @@ class TestSelenium(LiveServerTestCase):
         self.selenium = webdriver.Firefox()
 
     def test_registration(self):
+        ''' tests registration with selenium'''
         selenium = self.selenium
         selenium.get('http://127.0.0.1:8000/signup/')
         username = selenium.find_element_by_id('id_username')
@@ -29,6 +30,7 @@ class TestSelenium(LiveServerTestCase):
         self.assertTrue(self.selenium.find_element_by_id("logout"))
 
     def test_login(self):
+        ''' tests login with selenium'''
         selenium = self.selenium
         selenium.get('http://127.0.0.1:8000/accounts/login')
         username = selenium.find_element_by_id('id_username')
@@ -41,15 +43,3 @@ class TestSelenium(LiveServerTestCase):
             EC.presence_of_element_located((By.ID, "logout"))
         )
         self.assertTrue(self.selenium.find_element_by_id("logout"))
-
-    '''def test_save(self):
-        selenium = self.selenium
-        selenium.get('http://127.0.0.1:8000/search?query=pizzas')
-        save = selenium.find_element_by_name('save')
-        save.click()
-    
-    def test_delete(self):
-        selenium = self.selenium
-        selenium.get('http://127.0.0.1:8000/')
-        save = selenium.find_element_by_name('save')
-        save.click()'''
