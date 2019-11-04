@@ -89,7 +89,7 @@ DATABASES = {
 }
 
 if DEBUG is False:
-    import dj_data_base_url
+    import dj_database_url
     DATABASES['default'] = dj_database_url.config()
 
 # Password validation
