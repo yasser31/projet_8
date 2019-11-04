@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 import os
-import dj_database_url
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,7 +24,8 @@ SECRET_KEY = 'oxw^sd1m-dnc4y-#(r#uo#y&68wyzq1g516k4u)5baryeq!6v)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['cryptic-headland-44701.herokuapp.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['cryptic-headland-44701.herokuapp.com',
+                 '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -49,7 +50,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    
+
 ]
 
 ROOT_URLCONF = 'amateur_nutella.urls'
@@ -78,15 +79,18 @@ WSGI_APPLICATION = 'amateur_nutella.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.environ.get("ENGINE"),
+        'ENGINE': os.environ.get('ENGINE'),
         'NAME': os.environ.get('DATA_BASE_NAME'),
         'USER': os.environ.get('DATA_BASE_USER'),
         'PASSWORD': os.environ.get('DATA_BASE_PASSWORD'),
-                    'HOST': os.environ.get('DATA_BASE_HOST'),
-                    'PORT': os.environ.get('PORT')
+        'HOST': os.environ.get('DATA_BASE_HOST'),
+        'PORT': os.environ.get('PORT')
     }
 }
-DATABASES['default'] = dj_database_url.config()
+
+if DEBUG is False:
+    import dj_data_base_url
+    DATABASES['default'] = dj_database_url.config()
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -144,7 +148,7 @@ LOGGING = {
     'loggers': {
         'django': {
             'handlers': ['console'],
-             'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
         },
     },
 }

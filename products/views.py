@@ -16,8 +16,9 @@ def search(request):
     try:
         query = request.GET.get('query')
         searched_product = Products.objects.filter(
-        product_name__icontains=query)[0]
-        result = Products.objects.filter(product_name__icontains=query).order_by("nutrition_grade")[0:10]
+            product_name__icontains=query)[0]
+        result = Products.objects.filter(
+            product_name__icontains=query).order_by("nutrition_grade")[0:10]
         context = {
             'result': result,
             'query': searched_product
@@ -25,7 +26,7 @@ def search(request):
         return render(request, "result.html", context)
     except IndexError:
         context = {
-                    "no_product": True
+            "no_product": True
         }
         return render(request, "result.html", context)
 
@@ -70,6 +71,7 @@ def preferences(request):
             'query': query
         }
         return render(request, "preferences.html", context)
+
 
 @login_required()
 def remove_preferences(request, preference_id):
