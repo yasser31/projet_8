@@ -1,6 +1,6 @@
 
 {% extends 'base.html' %}
-{% block content %}
+{% block login %}
 <div class="container mt-5">
     <div class="row">
         <div class="col-lg- mt-5">
@@ -8,7 +8,7 @@
             <form class="form-group mt-5" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit" class="btn btn-success">Login</button></br>
+                <button type="submit" class="btn btn-success" name="login">Login</button>
                 <a href="{% url 'signup' %}"> Vous n'avez pas de compte, inscrivez vous!</a>
             </form>
         </div>

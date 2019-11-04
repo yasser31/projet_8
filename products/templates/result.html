@@ -44,7 +44,7 @@
         <span class="badge badge-danger w-25 h-10"> {{ item.nutrition_grade|upper }}</span>
         {% endif %}
         {% if item.is_product %}
-        <a href="{% url 'save' product_id=item.id %}">
+        <a href="{% url 'save' product_id=item.id %}" name="save">
           <img src="{{item.image}}" class="card-img-top w-100 h-60" alt="max-height 100%">
         </a>
         {% else %}
