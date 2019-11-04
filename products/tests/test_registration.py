@@ -48,7 +48,7 @@ class TestSelenium(LiveServerTestCase):
         save = selenium.find_element_by_name('save')
         save.click()
     
-    def test_save(self):
+    def test_delete(self):
         selenium = self.selenium
         selenium.get('http://127.0.0.1:8000/')
         save = selenium.find_element_by_name('save')
