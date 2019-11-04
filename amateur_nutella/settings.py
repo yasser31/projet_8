@@ -80,10 +80,10 @@ DATABASES = {
     'default': {
         'ENGINE': os.environ.get("ENGINE"),
         'NAME': os.environ.get('DATA_BASE_NAME'),
-        'USER': os.envrion.get('DATA_BASE_USER'),
+        'USER': os.environ.get('DATA_BASE_USER'),
         'PASSWORD': os.environ.get('DATA_BASE_PASSWORD'),
                     'HOST': os.environ.get('DATA_BASE_HOST'),
-                    'PORT': os.enviton.get('PORT')
+                    'PORT': os.environ.get('PORT')
     }
 }
 
