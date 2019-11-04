@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 import os
-import dj_database_url
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -78,16 +78,15 @@ WSGI_APPLICATION = 'amateur_nutella.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.environ.get("ENGINE"),
-        'NAME': os.environ.get("DATA_BASE_NAME"),
-        'USER': os.environ.get("DABASE_USER"),
-        'PASSWORD': os.environ.get("DATA_BASE_PASSWORD"),
-                    'HOST': os.environ.get("DATA_BASE_HOST"),
-                    'PORT': os.environ.get("PORT")
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'amateur_nutella',
+        'USER': 'postgres',
+        'PASSWORD': 'YASSERfriha31',
+                    'HOST': 'localhost',
+                    'PORT': '5432'
     }
 }
 
-DATABASES['default'] = dj_database_url.config()
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators

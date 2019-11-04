@@ -42,7 +42,7 @@ class TestSelenium(LiveServerTestCase):
         )
         self.assertTrue(self.selenium.find_element_by_id("logout"))
 
-    def test_save(self):
+    '''def test_save(self):
         selenium = self.selenium
         selenium.get('http://127.0.0.1:8000/search?query=pizzas')
         save = selenium.find_element_by_name('save')
@@ -52,4 +52,4 @@ class TestSelenium(LiveServerTestCase):
         selenium = self.selenium
         selenium.get('http://127.0.0.1:8000/')
         save = selenium.find_element_by_name('save')
-        save.click()
+        save.click()'''

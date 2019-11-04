@@ -13,8 +13,8 @@ def index(request):
 
 
 def search(request):
-    query = request.GET.get('query')
     try:
+        query = request.GET.get('query')
         searched_product = Products.objects.filter(
         product_name__icontains=query)[0]
         result = Products.objects.filter(product_name__icontains=query).order_by("nutrition_grade")[0:10]
@@ -23,7 +23,7 @@ def search(request):
             'query': searched_product
         }
         return render(request, "result.html", context)
-    except:
+    except IndexError:
         context = {
                     "no_product": True
         }

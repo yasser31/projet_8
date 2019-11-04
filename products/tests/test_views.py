@@ -34,5 +34,5 @@ class TestViews(unittest.TestCase):
     def test_search(self):
         response = self.client.get("/search/", data={"query": "coca"})
         self.assertEqual(response.templates[0].name, "result.html")
-        self.assertRaises(Products.DoesNotExist)
+        self.assertRaises(IndexError)
         self.assertTrue(response.context)
