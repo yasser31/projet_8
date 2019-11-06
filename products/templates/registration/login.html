@@ -8,7 +8,7 @@
             <form class="form-group mt-5" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit" class="btn btn-success" name="login">Login</button>
+                <button type="submit" class="btn btn-success my-2" name="login">Login</button></br>
                 <a href="{% url 'signup' %}"> Vous n'avez pas de compte, inscrivez vous!</a>
             </form>
         </div>

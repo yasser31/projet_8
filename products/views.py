@@ -34,7 +34,7 @@ def search(request):
         }
         return render(request, "result.html", context)
 
-# function that will handle saving products use with a decorator
+# function that will handle saving products, use with a decorator
 @login_required()
 def save(request, product_id):
     product = Products.objects.get(id=product_id)

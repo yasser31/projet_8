@@ -54,24 +54,24 @@
         <a href="{% url 'save' product_id=item.id %}" name="save">
           <img src="{{item.image}}" class="card-img-top w-100 h-60" alt="max-height 100%">
         </a>
-        {% else %}
-        <!-- the image is not a link if we are in preferences-->
-        <img src="{{item.image}}" class="card-img-top w-100 h-60" alt="max-height 100%">
-        {% endif %}
+        <!-- display save icon if we are dealing with results-->
+        <div class="card-body">
+          <a href="{% url 'save' product_id=item.id %}" class="card-link" id="save">
+            <i class="fas fa-save" title="Enregistrer"></i></a>
+        </div>
         <div class="card-body">
           <h5 class="card-title">{{ item.product_name }}</h5>
         </div>
-        {% if item.is_product %}
-        <!-- display save icon if we are dealing with results-->
-        <div class="card-body">
-          <a href="{% url 'save' product_id=item.id %}" class="card-link">
-            <i class="fas fa-save" title="Enregistrer"></i></a>
-        </div>
         {% else %}
+        <!-- the image is not a link if we are in preferences-->
+        <img src="{{item.image}}" class="card-img-top w-100 h-60" alt="max-height 100%">
         <div class="card-body">
           <!-- display delete icon if we are dealing with preferences-->
-          <a href="{% url 'remove' preference_id=item.id %}" class="card-link">
+          <a href="{% url 'remove' preference_id=item.id %}" class="card-link" id="remove">
             <i class="fas fa-trash-alt" title="retirer"></i></a>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ item.product_name }}</h5>
         </div>
         {% endif %}
       </div>
@@ -79,5 +79,5 @@
     {% endfor %}
   </div>
 </div>
-{% endif%}
+{% endif %}
 {% endblock %}

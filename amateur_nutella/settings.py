@@ -19,10 +19,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'oxw^sd1m-dnc4y-#(r#uo#y&68wyzq1g516k4u)5baryeq!6v)'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['cryptic-headland-44701.herokuapp.com',
                  '127.0.0.1', 'localhost']
@@ -79,12 +79,12 @@ WSGI_APPLICATION = 'amateur_nutella.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.environ.get('ENGINE'),
-        'NAME': os.environ.get('DATA_BASE_NAME'),
-        'USER': os.environ.get('DATA_BASE_USER'),
-        'PASSWORD': os.environ.get('DATA_BASE_PASSWORD'),
-        'HOST': os.environ.get('DATA_BASE_HOST'),
-        'PORT': os.environ.get('PORT')
+        'ENGINE': os.environ.get("ENGINE"),
+        'NAME': os.environ.get("DATA_BASE_NAME"),
+        'USER': os.environ.get("DATA_BASE_USER"),
+        'PASSWORD': os.environ.get("DATA_BASE_PASSWORD"),
+        'HOST': os.environ.get("DATA_BASE_HOST"),
+        'PORT': os.environ.get("PORT")
     }
 }
 
@@ -136,19 +136,3 @@ MEDIA_URL = "/media/"
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 WHITE_NOISE_USE_FINDERS = True
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['console'],
-            'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
-        },
-    },
-}
