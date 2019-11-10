@@ -3,11 +3,11 @@ python:
     - 3.6
 
 services:
-    -postgresql
+    - postgresql
 
 before_script:
-    pip install -r requirements.txt
-    psql -c 'create database travis_ci_test;' -U postgres
+    - pip install -r requirements.txt
+    - psql -c 'create database travis_ci_test;' -U postgres
 
 script:
     - python manage.py test products.tests --exclude-tag=selenium
