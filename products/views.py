@@ -34,7 +34,7 @@ def search(request):
         }
         return render(request, "result.html", context)
 
-# function that will handle saving products, use with a decorator
+# function that will handle saving products, used with a decorator
 @login_required()
 def save(request, product_id):
     product = Products.objects.get(id=product_id)
@@ -63,7 +63,7 @@ def save(request, product_id):
 # handle the acces to preferences
 @login_required()
 def preferences(request):
-    result = Preferences.objects.all()
+    result = Preferences.objects.filter(user__username=request.user.username)
     try:
         query = result[0]
     except IndexError:
@@ -79,9 +79,15 @@ def preferences(request):
 # handle preferences deletion
 @login_required()
 def remove_preferences(request, preference_id):
-    preference = Preferences.objects.get(id=preference_id)
-    preference.delete()
-    return render(request, "preferences.html")
+    preference_to_delete = Preferences.objects.get(id=preference_id)
+
+    preference_to_delete.delete()
+    result = Preferences.objects.filter(
+        user__username=request.user.username)
+    context = {
+        'result': result
+    }
+    return render(request, "preferences.html", context)
 
 # handle the signup
 
