@@ -1,5 +1,6 @@
 settings.json
 __pycache__/
+media/
 .vscode
 *.bak
 *.pot
