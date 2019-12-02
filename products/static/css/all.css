@@ -3327,7 +3327,8 @@ readers do not read off random characters that represent icons */
   content: "\f4d9"; }
 
 .fa-sign-in-alt:before {
-  content: "\f2f6"; }
+  content: "\f2f6";
+}
 
 .fa-sign-language:before {
   content: "\f2a7"; }

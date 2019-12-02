@@ -64,14 +64,14 @@
         </div>
         {% else %}
         <!-- the image is not a link if we are in preferences-->
-        <img src="{{item.image}}" class="card-img-top w-100 h-60" alt="max-height 100%">
+        <img src="{{item.product.image}}" class="card-img-top w-100 h-60" alt="max-height 100%">
         <div class="card-body">
           <!-- display delete icon if we are dealing with preferences-->
           <a href="{% url 'remove' preference_id=item.id %}" class="card-link" id="remove">
             <i class="fas fa-trash-alt" title="retirer"></i></a>
         </div>
         <div class="card-body">
-          <h5 class="card-title">{{ item.product_name }}</h5>
+          <h5 class="card-title">{{ item.product.product_name }}</h5>
         </div>
         {% endif %}
       </div>

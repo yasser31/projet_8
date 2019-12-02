@@ -39,16 +39,13 @@ def search(request):
 def save(request, product_id):
     product = Products.objects.get(id=product_id)
     try:
-        Preferences.objects.get(product_name=product.product_name)
+        Preferences.objects.get(product__product_name=product.product_name)
     except Preferences.DoesNotExist:
-        Preferences.objects.create(product_name=product.product_name,
-                                   image=product.image,
-                                   nutrition_grade=product.nutrition_grade,
-                                   nutrition_image=product.nutri_image,
-                                   product_url=product.product_url)
+        Preferences.objects.create(product=product)
     else:
         pass
-    preference = Preferences.objects.get(product_name=product.product_name)
+    preference = Preferences.objects.get(
+        product__product_name=product.product_name)
     user = User.objects.get(username=request.user.username)
     preference.user.add(user)
     context = {
@@ -118,3 +115,7 @@ def contact(request):
 
 def legal_notice(request):
     return render(request, "notice.html")
+
+
+def account(request):
+    return render(request, "account.html")

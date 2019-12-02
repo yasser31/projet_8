@@ -11,5 +11,6 @@ urlpatterns = [
          name="remove"),
     path('signup/', views.signup, name="signup"),
     path("contact/", views.contact, name="contact"),
-    path("legal/", views.legal_notice, name="legal")
+    path("legal/", views.legal_notice, name="legal"),
+    path("profile/", views.account, name="profile"),
 ]
