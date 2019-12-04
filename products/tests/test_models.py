@@ -9,8 +9,9 @@ class CreateTest(TestCase):
         '''
         set up before tests
         '''
-        self.preference = Preferences.objects.create(product_name='pizza')
         self.product = Products.objects.create(product_name='pizza')
+        self.preference = Preferences.objects.create(
+            product=self.product)
 
     def test_create(self):
         ''' tests the creation of a product in the DB'''
