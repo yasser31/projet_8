@@ -57,7 +57,7 @@
         <!-- display save icon if we are dealing with results-->
         <div class="card-body">
           <a href="{% url 'save' product_id=item.id %}" class="card-link" id="save">
-            <i class="fas fa-save" title="Enregistrer"></i></a>
+            <i class="fas fa-save" title="Enregistrer"></i> Enregistrer</a>
         </div>
         <div class="card-body">
           <h5 class="card-title">{{ item.product_name }}</h5>
@@ -71,7 +71,7 @@
             <i class="fas fa-trash-alt" title="retirer"></i></a>
         </div>
         <div class="card-body">
-          <h5 class="card-title">{{ item.product.product_name }}</h5>
+          <a href="{% url 'details' product_id=item.id %}"><h5 class="card-title">{{ item.product.product_name }}</h5></a>
         </div>
         {% endif %}
       </div>

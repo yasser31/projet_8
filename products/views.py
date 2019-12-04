@@ -57,6 +57,21 @@ def save(request, product_id):
     }
     return render(request, "save.html", context)
 
+# details page
+
+
+def details(request, product_id):
+    product = Preferences.objects.get(
+        id=product_id)
+    context = {
+        "name": product.product.product_name,
+        "image": product.product.image,
+        "nutrition_grade": product.product.nutrition_grade,
+        "nutrition_image": product.product.nutri_image,
+        "url": product.product.product_url
+    }
+    return render(request, "save.html", context)
+
 # handle the acces to preferences
 @login_required()
 def preferences(request):

@@ -13,4 +13,5 @@ urlpatterns = [
     path("contact/", views.contact, name="contact"),
     path("legal/", views.legal_notice, name="legal"),
     path("profile/", views.account, name="profile"),
+    path("details/<int:product_id>", views.details, name="details"),
 ]

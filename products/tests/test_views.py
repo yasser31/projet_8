@@ -9,7 +9,7 @@ class TestViews(unittest.TestCase):
 
     def setUp(self):
         self.client = Client()
-        
+
     def test_index(self):
         ''' tests get request to the index page'''
         response = self.client.get("")
