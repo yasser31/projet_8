@@ -20,7 +20,7 @@ class Products(models.Model):
 class Preferences(models.Model):
     ''' defines the preferences table with the attributes'''
     product = models.ForeignKey(Products, on_delete=models.CASCADE)
-    user = models.ManyToManyField(User, related_name="preferences")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.product_name
