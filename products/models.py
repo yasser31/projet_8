@@ -23,4 +23,4 @@ class Preferences(models.Model):
     users = models.ManyToManyField(User, related_name="preferences")
 
     def __str__(self):
-        return self.product_name
+        return self.product.product_name

@@ -75,7 +75,7 @@ def details(request, product_id):
 # handle the acces to preferences
 @login_required()
 def preferences(request):
-    result = Preferences.objects.filter(user__username=request.user.username)
+    result = Preferences.objects.filter(users__username=request.user.username)
     try:
         query = result[0]
     except IndexError:
@@ -95,7 +95,7 @@ def remove_preferences(request, preference_id):
 
     preference_to_delete.delete()
     result = Preferences.objects.filter(
-        user__username=request.user.username)
+        users__username=request.user.username)
     context = {
         'result': result
     }
