@@ -14,6 +14,8 @@
 <!-- if no prodcut matches the query-->
 {% if no_product %}
 <h2 class="text-center mt-7"> Désolé nous n'avons trouver aucun produit correspondant à votre recherche</h2>
+{% elif no_search %}
+<h2 class="text-center mt-7"> Veuillez chercher un aliment s'il vous plait </h2>
 <!-- if no preferences found-->
 {% elif not result %}
 <h2 class="text-center mt-7"> Vous n'avez aucun substitut veuillez en rechercher un </h2>

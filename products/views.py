@@ -17,6 +17,11 @@ def index(request):
 
 
 def search(request):
+    if request.GET.get("query") == "":
+        context = {
+            "no_search": True
+        }
+        return render(request, "result.html", context)
     try:
         query = request.GET.get('query')
         searched_product = Products.objects.filter(
