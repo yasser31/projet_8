@@ -65,7 +65,7 @@ def save(request, product_id):
 # details page
 
 
-def details(request, product_id):
+def details_preferences(request, product_id):
     product = Preferences.objects.get(
         id=product_id)
     context = {
@@ -74,6 +74,19 @@ def details(request, product_id):
         "nutrition_grade": product.product.nutrition_grade,
         "nutrition_image": product.product.nutri_image,
         "url": product.product.product_url
+    }
+    return render(request, "save.html", context)
+
+
+def details_products(request, product_id):
+    product = Products.objects.get(
+        id=product_id)
+    context = {
+        "name": product.product_name,
+        "image": product.image,
+        "nutrition_grade": product.nutrition_grade,
+        "nutrition_image": product.nutri_image,
+        "url": product.product_url
     }
     return render(request, "save.html", context)
 
