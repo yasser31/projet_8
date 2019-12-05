@@ -15,10 +15,10 @@ class CreateTest(TestCase):
 
     def test_create(self):
         ''' tests the creation of a product in the DB'''
-        product = Products.objects.get(product_name=self.product)
-        preference = Preferences.objects.get(product_name=self.preference)
+        product = Products.objects.get(product_name="pizza")
+        preference = Preferences.objects.get(product=product)
         self.assertEqual(product.product_name, 'pizza')
-        self.assertEqual(preference.product_name, 'pizza')
+        self.assertEqual(preference.product.product_name, 'pizza')
 
     def test_update(self):
         ''' tests the update of a product'''

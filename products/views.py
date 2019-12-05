@@ -47,7 +47,7 @@ def save(request, product_id):
     preference = Preferences.objects.get(
         product__product_name=product.product_name)
     user = User.objects.get(username=request.user.username)
-    preference.user.add(user)
+    preference.users.add(user)
     context = {
         "name": product.product_name,
         "image": product.image,
