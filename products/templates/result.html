@@ -62,7 +62,7 @@
             <i class="fas fa-save" title="Enregistrer"></i> Enregistrer</a>
         </div>
         <div class="card-body">
-          <h5 class="card-title">{{ item.product_name }}</h5>
+          <a href="{% url 'details' product_id=item.id %}"><h5 class="card-title">{{ item.product_name }}</h5></a>
         </div>
         {% else %}
         <!-- the image is not a link if we are in preferences-->
