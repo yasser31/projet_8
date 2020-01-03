@@ -1,6 +1,11 @@
 from django.urls import path
 from . import views
 
+
+def trigger_error(request):
+    division_by_zero = 1 / 0
+
+
 # products url
 urlpatterns = [
     path('', views.index, name="index"),
@@ -16,5 +21,6 @@ urlpatterns = [
     path("details_products/<int:product_id>",
          views.details_products, name="details_products"),
     path("details_preferences/<int:product_id>",
-         views.details_preferences, name="details_preferences")
+         views.details_preferences, name="details_preferences"),
+    path('sentry-debug/', trigger_error)
 ]
